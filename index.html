@@ -3,16 +3,158 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon"/>
+  <link rel="shortcut icon" href="favicon.ico">
   <title>Portfolio for Maxwell (Max) Struever</title>
 
   <meta name="keywords" content="Maxwell Max Struever portfolio web design develop developer coder software engineer" />
   <meta name="description" content="A portfolio of some of the software development work Max Struever has done" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/styles.css" />
 </head>
 
 <body>
-  <h1>Hell World</h1>
+  <md-toolbar layout="row" class="md-toolbar-tools" ng-cloak layout-align="space-between center">
+    <md-button class="md-icon-button md-accent" hide-gt-sm ng-click="toggleLeft()" aria-label="Show Nav">
+      <md-icon aria-label="settings" class="material-icons">settings</md-icon>
+    </md-button>
 
+    <h1 class="md-accent">Web Portfolio for Maxwell (Max) Struever</h1>
+  </md-toolbar>
+  <div flex layout="column" ng-cloak>
+    <!--main content-->
+    <!-- Side Nav Prefs -->
+    <md-sidenav class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left">
+      <md-content class="md-padding">
+        <md-button class="md-icon-button" hide-gt-sm ng-click="toggleLeft()" aria-label="Show Nav">
+          <md-icon aria-label="close" class="material-icons">close</md-icon>
+        </md-button>
+        <md-list>
+          <!-- <md-subheader class="">Menu</md-subheader> -->
+          <md-list-item>
+            <strong>Portfolio </strong> You're Here!
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item>
+            Find me and my work elsewhere on the web
+          </md-list-item>
+          <md-list-item>
+            <md-button class="md-raised md-accent" href="https://www.linkedin.com/in/maxstruever/" target="_blank">
+              <md-icon aria-label="linkedin" class="material-icons">link</md-icon> LinkedIn
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="md-raised md-accent" href="http://github.com/madmaxlax" target="_blank">
+              <md-icon aria-label="github" class="material-icons">code</md-icon> GitHub
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="md-raised md-accent" href="http://twitter.com/madmaxlax" target="_blank">
+              <md-icon aria-label="twitter" class="material-icons">mode_comment</md-icon> Twtitter
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="" href="mailto:maxstruever [at] gmail.com">
+              <md-icon aria-label="email" class="material-icons">email</md-icon> Email
+            </md-button>
+          </md-list-item>
+
+        </md-list>
+      </md-content>
+    </md-sidenav>
+    <div flex="100">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Portfolio search</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            These are some examples of my work as a developer on the web. I love all kinds of developing, backend or web front-end, but
+            lately my favorite is AngularJS for web apps.
+          </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <div layout="row" layout-wrap>
+      <div flex ng-if="!portfolio || portfolio.websites.length === 0">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Loading Sites (from Trello)</span>
+            </md-card-title-text>
+          </md-card-title>
+        </md-card>
+      </div>
+      <div flex="25" ng-repeat="site in portfolio.websites">
+        <md-card>
+          <img ng-src="http://via.placeholder.com/350x150" class="md-card-image" alt="Washed Out">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{site.name}}</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <p>
+              {{site.desc}}
+            </p>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button>Action 1</md-button>
+            <md-button>Action 2</md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+      <div flex="100">
+          <md-card>
+            <img ng-src="http://via.placeholder.com/350x150" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">Card Header</span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+              <p>
+                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
+                Greene's musical language: feel it. It's a simple request, as well...
+              </p>
+              <p>
+                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
+                Greene's musical language: feel it. It's a simple request, as well...
+              </p>
+              <p>
+                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
+                Greene's musical language: feel it. It's a simple request, as well...
+              </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button>Action 1</md-button>
+              <md-button>Action 2</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- <script src="./scripts/bootstrap.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script src="./scripts/app.js"></script>
 </body>
 
 </html>
