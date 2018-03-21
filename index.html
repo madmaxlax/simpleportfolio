@@ -93,13 +93,18 @@
               <label>Search here</label>
               <input ng-model="portfolioSearchText">
             </md-input-container>
-            Or try some tags:
-            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'API'">API
-            </md-button>
-            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Embarrassing'">🤔
-            </md-button>
             <md-button class="md-raised" ng-click="portfolioSearchText = '' ">Clear Search
               <md-icon aria-label="clear filter" class="material-icons">close</md-icon>
+            </md-button>
+            <br>
+            Or try some tags:
+            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'API'">API's
+            </md-button>
+            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Angular'">AngularJS
+              </md-button>
+            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Favorites
+              </md-button>
+            <md-button class="md-fab md-mini" ng-click="portfolioSearchText = 'Embarrassing'">🤔
             </md-button>
           </md-card-content>
           <!-- <md-card-actions layout="row" layout-align="end center">
@@ -109,16 +114,16 @@
         </md-card>
       </div>
       <div layout="row" layout-wrap>
-        <div flex="50" flex-gt-sm="33" flex-gt-md="25" ng-if="!portfolio || portfolio.items.length === 0">
+        <div flex="100" ng-if="!portfolio || portfolio.items.length === 0">
           <md-card>
             <md-card-title>
               <md-card-title-text>
-                <span class="md-headline">Loading Sites (from Trello)</span>
+                <span class="md-headline">Loading Sites (from Trello) <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">https://trello.com/b/bgLwimyQ/maxs-online-portfolio</a></span>
               </md-card-title-text>
             </md-card-title>
           </md-card>
         </div>
-        <div flex="50" flex-gt-sm="33" flex-gt-lg="25" ng-repeat="site in portfolio.items | filter:portfolioSearchText" ng-hide="getNameFromArray(site.labels,'embarrassing') && !portfolioSearchText.includes('Embarrassing')">
+        <div flex="100" flex-gt-xs="50" flex-gt-sm="33" flex-gt-lg="25" ng-repeat="site in portfolio.items | filter:portfolioSearchText" ng-hide="getNameFromArray(site.labels,'embarrassing') && !portfolioSearchText.includes('Embarrassing')">
           <md-card>
             <img class="cover" ng-if="getNameFromArray(site.attachments,'MainImage')" ng-src="{{getNameFromArray(site.attachments,'MainImage').previews[4].url}}"
               class="md-card-image" alt="Washed Out">
