@@ -20,6 +20,9 @@
             $mdSidenav('left').toggle();
         };
 
+        //initialize filter text
+        $scope.portfolioSearchText = '';
+
         //helper function to get the item in an array with the key Name and the value as given name (if it has one)
         $scope.getNameFromArray = function(arr, nm) {
             if(arr instanceof Array && nm != null){

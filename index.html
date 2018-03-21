@@ -83,11 +83,10 @@
               <span class="md-headline">Portfolio search</span>
             </md-card-title-text>
           </md-card-title>
-          <md-card-content ng-if="!portfolio.items">
-            Loading portfolio items (from Trello)
-                  <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">https://trello.com/b/bgLwimyQ/maxs-online-portfolio</a>
+          <md-card-content ng-hide="portfolio.items">
+            Loading portfolio items, which are coming from a <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">Trello board as the backend</a>
           </md-card-content>
-          <md-card-content ng-if="portfolio.items">
+          <md-card-content ng-show="portfolio.items">
             <p>
               These are some examples of my work as a developer on the web. I love all kinds of developing, from the full stack, but lately
               my favorite is AngularJS for web apps.
@@ -96,16 +95,16 @@
             <md-input-container>
               <label>Search here</label>
               <input ng-model="portfolioSearchText">
-            </md-input-container>
+            </md-input-container> Found: {{portfolioFiltered.length}}
             <md-button class="md-raised" ng-click="portfolioSearchText = '' ">Clear Search
               <md-icon aria-label="clear filter" class="material-icons">close</md-icon>
             </md-button>
             <br> Or try some tags:
+            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Highlights
+              </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'API'">API's
             </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Angular'">AngularJS
-            </md-button>
-            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Favorites
             </md-button>
             <md-button class="md-fab md-mini" ng-click="portfolioSearchText = 'Embarrassing'">🤔
             </md-button>
@@ -126,12 +125,11 @@
               </md-card-title-text>
             </md-card-title>
             <md-card-content>
-                Fetching portfolio items, which are coming from a Trello board as the backend
-                <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">https://trello.com/b/bgLwimyQ/maxs-online-portfolio</a>
+                Fetching portfolio items, which are coming from a <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">Trello board as the backend</a>
             </md-card-content>
           </md-card>
         </div>
-        <div flex="100" flex-gt-xs="50" flex-gt-sm="33" flex-gt-lg="25" ng-repeat="site in portfolio.items | filter:portfolioSearchText"
+        <div flex="100" flex-gt-xs="50" flex-gt-sm="33" flex-gt-lg="25" ng-repeat="site in portfolio.items | filter:portfolioSearchText as portfolioFiltered"
           ng-hide="getNameFromArray(site.labels,'embarrassing') && !portfolioSearchText.includes('Embarrassing')">
           <md-card>
             <img class="cover" ng-if="getNameFromArray(site.attachments,'MainImage')" ng-src="{{getNameFromArray(site.attachments,'MainImage').previews[4].url}}"
