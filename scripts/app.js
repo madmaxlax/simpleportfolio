@@ -23,6 +23,21 @@
         //initialize filter text
         $scope.portfolioSearchText = '';
 
+        $scope.closeDialog = function(){
+            $mdDialog.hide();
+            $scope.portfolioDetail = {};
+        }
+
+        $scope.showPortfolioDetail = function(portfolioItem){
+            $scope.portfolioDetail = portfolioItem;
+            $mdDialog.show({
+                contentElement: '#portfolioItemDialog',
+                parent: angular.element(document.body),
+                // targetEvent: ev,
+                clickOutsideToClose: true
+              });
+        };
+
         //helper function to get the item in an array with the key Name and the value as given name (if it has one)
         $scope.getNameFromArray = function(arr, nm) {
             if(arr instanceof Array && nm != null){

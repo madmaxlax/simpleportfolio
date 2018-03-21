@@ -5,6 +5,12 @@ img.cover {
     height: 200px; /* optional, but in my case it was good */
     box-shadow: 0 1px 0px 0px rgba(0,0,0,.14);
  }
+ md-dialog img.cover {
+    object-fit: scale-down;
+    width: 100%;
+    height: 400px; /* optional, but in my case it was good */
+    box-shadow: 0 1px 0px 0px rgba(0,0,0,.14);
+ }
  div.inline{
      display: inline;
  }
@@ -12,3 +18,14 @@ img.cover {
      text-decoration: underline;
      cursor: pointer;
  }
+ md-card.portfolio-item:hover{
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.4), 0 2px 2px 0 rgba(0,0,0,.28), 0 4px 2px -2px rgba(0,0,0,.24);
+    cursor: pointer;
+ }
+ md-card.portfolio-item:active{
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.8), 0 2px 2px 0 rgba(0,0,0,.6), 0 4px 2px -2px rgba(0,0,0,.4);
+    cursor: pointer;
+ }
+ md-card.portfolio-item:focus {
+    outline: 0;
+}
