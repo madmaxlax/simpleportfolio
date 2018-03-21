@@ -83,7 +83,11 @@
               <span class="md-headline">Portfolio search</span>
             </md-card-title-text>
           </md-card-title>
-          <md-card-content>
+          <md-card-content ng-if="!portfolio.items">
+            Loading portfolio items (from Trello)
+                  <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">https://trello.com/b/bgLwimyQ/maxs-online-portfolio</a>
+          </md-card-content>
+          <md-card-content ng-if="portfolio.items">
             <p>
               These are some examples of my work as a developer on the web. I love all kinds of developing, from the full stack, but lately
               my favorite is AngularJS for web apps.
@@ -96,14 +100,13 @@
             <md-button class="md-raised" ng-click="portfolioSearchText = '' ">Clear Search
               <md-icon aria-label="clear filter" class="material-icons">close</md-icon>
             </md-button>
-            <br>
-            Or try some tags:
+            <br> Or try some tags:
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'API'">API's
             </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Angular'">AngularJS
-              </md-button>
+            </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Favorites
-              </md-button>
+            </md-button>
             <md-button class="md-fab md-mini" ng-click="portfolioSearchText = 'Embarrassing'">🤔
             </md-button>
           </md-card-content>
@@ -114,16 +117,22 @@
         </md-card>
       </div>
       <div layout="row" layout-wrap>
-        <div flex="100" ng-if="!portfolio || portfolio.items.length === 0">
+        <div flex="100" ng-if="!portfolio.items">
           <md-card>
             <md-card-title>
               <md-card-title-text>
-                <span class="md-headline">Loading Sites (from Trello) <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">https://trello.com/b/bgLwimyQ/maxs-online-portfolio</a></span>
+                <span class="md-headline">Loading...
+                </span>
               </md-card-title-text>
             </md-card-title>
+            <md-card-content>
+                Fetching portfolio items, which are coming from a Trello board as the backend
+                <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">https://trello.com/b/bgLwimyQ/maxs-online-portfolio</a>
+            </md-card-content>
           </md-card>
         </div>
-        <div flex="100" flex-gt-xs="50" flex-gt-sm="33" flex-gt-lg="25" ng-repeat="site in portfolio.items | filter:portfolioSearchText" ng-hide="getNameFromArray(site.labels,'embarrassing') && !portfolioSearchText.includes('Embarrassing')">
+        <div flex="100" flex-gt-xs="50" flex-gt-sm="33" flex-gt-lg="25" ng-repeat="site in portfolio.items | filter:portfolioSearchText"
+          ng-hide="getNameFromArray(site.labels,'embarrassing') && !portfolioSearchText.includes('Embarrassing')">
           <md-card>
             <img class="cover" ng-if="getNameFromArray(site.attachments,'MainImage')" ng-src="{{getNameFromArray(site.attachments,'MainImage').previews[4].url}}"
               class="md-card-image" alt="Washed Out">
@@ -145,12 +154,12 @@
                 </a>
               </div>
             </md-card-content>
-            <md-card-actions layout="row" layout-align="end center" >
+            <md-card-actions layout="row" layout-align="end center">
               <md-button ng-if="getNameFromArray(site.attachments,'github')" target="_blank" class="md-raised" ng-href="{{getNameFromArray(site.attachments,'github').url}}">
                 <md-icon aria-label="github" class="material-icons">code</md-icon>
                 GitHub
               </md-button>
-              <md-button  ng-if="getNameFromArray(site.attachments,'Link')" target="_blank" class="md-raised md-accent" ng-href="{{getNameFromArray(site.attachments,'Link').url}}">Check it out
+              <md-button ng-if="getNameFromArray(site.attachments,'Link')" target="_blank" class="md-raised md-accent" ng-href="{{getNameFromArray(site.attachments,'Link').url}}">Check it out
                 <md-icon aria-label="external link" class="material-icons">open_in_new</md-icon>
               </md-button>
             </md-card-actions>
@@ -158,24 +167,15 @@
         </div>
         <div flex="100" ng-hide="true">
           <md-card>
-            <img ng-src="http://via.placeholder.com/350x150" class="md-card-image" alt="Washed Out">
+            <!-- <img ng-src="http://via.placeholder.com/350x150" class="md-card-image" alt="Washed Out"> -->
             <md-card-title>
               <md-card-title-text>
-                <span class="md-headline">Card Header</span>
+                <span class="md-headline">And that's it!</span>
               </md-card-title-text>
             </md-card-title>
             <md-card-content>
               <p>
-                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
-                Greene's musical language: feel it. It's a simple request, as well...
-              </p>
-              <p>
-                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
-                Greene's musical language: feel it. It's a simple request, as well...
-              </p>
-              <p>
-                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
-                Greene's musical language: feel it. It's a simple request, as well...
+
               </p>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
