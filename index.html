@@ -139,8 +139,26 @@
                 </div>
               </md-toolbar>
 
-              <img class="cover" ng-if="getNameFromArray(portfolioDetail.attachments,'MainImage')" ng-src="{{getNameFromArray(portfolioDetail.attachments,'MainImage').url}}"
-                class="md-card-image" alt="screenshot">
+              <img class="cover" ng-if="getNameFromArray(portfolioDetail.attachments,'MainImage')" ng-src="{{portfolioDetail.currentImage.url}}"
+                class="md-card-image" alt="screenshot" ng-attr-title="portfolioDetail.currentImage.name">
+              <div class="image-buttons-wrapper">
+                <div class="image-button-prev" ng-show="portfolioDetail.prevImageIndex !== false">
+                  <md-button class="md-fab md-mini" ng-click="setPortfolioDetailImage(portfolioDetail.prevImageIndex)">
+                    <md-icon aria-label="prev" class="material-icons ">chevron_left</md-icon>
+                    <md-tooltip md-direction="botom">
+                        Show Previous Screenshot
+                      </md-tooltip>
+                  </md-button>
+                </div>
+                <div class="image-button-next" ng-show="portfolioDetail.nextImageIndex !== false">
+                  <md-button class="md-fab md-mini" ng-click="setPortfolioDetailImage(portfolioDetail.nextImageIndex)">
+                    <md-icon aria-label="next" class="material-icons ">chevron_right</md-icon>
+                    <md-tooltip md-direction="botom">
+                        Show Next Screenshot
+                      </md-tooltip>
+                  </md-button>
+                </div>
+              </div>
               <md-dialog-content>
                 <div class="md-dialog-content">
                   <div ng-bind-html="portfolioDetail.htmlDesc">
@@ -199,10 +217,10 @@
             </div>
             <md-card-content>
               {{site.DescShowMore?site.desc:site.desc.substring(0,300)}}
-              <div class="inline" ng-if="site.desc.length > 300 && !site.DescShowMore">...
-                <a ng-click="site.DescShowMore = !site.DescShowMore" class="show-more">
+              <div class="inline" ng-if="site.desc.length > 300 && !site.DescShowMore">...[Click to see details]
+                <!-- <a ng-click="site.DescShowMore = !site.DescShowMore; " class="show-more">
                   Show All
-                </a>
+                </a> -->
               </div>
               <div class="inline" ng-if="site.DescShowMore">
                 <a ng-click="site.DescShowMore = !site.DescShowMore" class="show-more">
