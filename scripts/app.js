@@ -30,7 +30,6 @@
 
         $scope.showPortfolioDetail = function(portfolioItem){
             $scope.portfolioDetail = portfolioItem;
-            console.log($scope.portfolioDetail.desc);
             var md = markdownit();
             $scope.portfolioDetail.htmlDesc = md.render($scope.portfolioDetail.desc);
             $mdDialog.show({

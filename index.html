@@ -107,7 +107,7 @@
               <md-icon aria-label="clear filter" class="material-icons">close</md-icon>
             </md-button>
             <br> Or try some tags:
-            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Favorites
+            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Highlights
             </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'API'">API's
             </md-button>
@@ -180,9 +180,9 @@
         <div flex="100" flex-gt-xs="50" flex-gt-sm="33" flex-gt-lg="25" ng-repeat="site in portfolio.items | filter:portfolioSearchText as portfolioFiltered"
           ng-hide="getNameFromArray(site.labels,'embarrassing') && !portfolioSearchText.includes('Embarrassing')">
           <md-card class="portfolio-item" ng-click="showPortfolioDetail(site)">
-            <img class="cover" ng-if="getNameFromArray(site.attachments,'MainImage')" ng-src="{{getNameFromArray(site.attachments,'MainImage').previews[4].url}}"
+            <img class="cover" ng-if="getNameFromArray(site.attachments,'MainImage')" ng-src="{{getNameFromArray(site.attachments,'MainImage').previews[4]?getNameFromArray(site.attachments,'MainImage').previews[4].url:getNameFromArray(site.attachments,'MainImage').url}}"
               class="md-card-image" alt="screenshot">
-            <div class="item-date-wrapper" ng-if="site.due">
+            <div class="item-date-wrapper" ng-if="site.due && getNameFromArray(site.attachments,'MainImage')">
               <div class="item-date">
                 {{site.due | date:'MMM yyyy'}}
               </div>
@@ -192,6 +192,11 @@
                 <span class="md-headline" md-truncate>{{site.name}}</span>
               </md-card-title-text>
             </md-card-title>
+            <div class="item-date-wrapper" ng-if="site.due && !(getNameFromArray(site.attachments,'MainImage'))">
+              <div class="item-date">
+                {{site.due | date:'MMM yyyy'}}
+              </div>
+            </div>
             <md-card-content>
               {{site.DescShowMore?site.desc:site.desc.substring(0,300)}}
               <div class="inline" ng-if="site.desc.length > 300 && !site.DescShowMore">...
