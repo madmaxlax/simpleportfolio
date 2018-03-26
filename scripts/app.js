@@ -7,7 +7,7 @@
 
 ///Set up Angular App
 (function () {
-    var app = angular.module('myapp', ['ngResource', 'ngMaterial']);
+    var app = angular.module('myapp', ['ngResource', 'ngMaterial', 'ngSanitize']);
     //Set up the main controller
     angular.module('myapp').config(function ($mdThemingProvider) {
         $mdThemingProvider.theme('default')
@@ -30,6 +30,9 @@
 
         $scope.showPortfolioDetail = function(portfolioItem){
             $scope.portfolioDetail = portfolioItem;
+            console.log($scope.portfolioDetail.desc);
+            var md = markdownit();
+            $scope.portfolioDetail.htmlDesc = md.render($scope.portfolioDetail.desc);
             $mdDialog.show({
                 contentElement: '#portfolioItemDialog',
                 parent: angular.element(document.body),

@@ -67,7 +67,8 @@
             </md-button>
           </md-list-item>
           <md-list-item>
-            <md-button class="md-raised md-accent" href="https://drive.google.com/uc?export=download&id=122nqPXrIIAsTb9TZ2400B9Ja8CU4xshs" target="_blank">
+            <md-button class="md-raised md-accent" href="https://drive.google.com/uc?export=download&id=122nqPXrIIAsTb9TZ2400B9Ja8CU4xshs"
+              target="_blank">
               <md-icon aria-label="download" class="material-icons">file_download</md-icon> Resume / CV
             </md-button>
           </md-list-item>
@@ -89,7 +90,8 @@
             </md-card-title-text>
           </md-card-title>
           <md-card-content ng-hide="portfolio.items">
-            Loading portfolio items, which are coming from a <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">Trello board as the backend</a>
+            Loading portfolio items, which are coming from a
+            <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">Trello board as the backend</a>
           </md-card-content>
           <md-card-content ng-show="portfolio.items">
             <p>
@@ -105,11 +107,13 @@
               <md-icon aria-label="clear filter" class="material-icons">close</md-icon>
             </md-button>
             <br> Or try some tags:
-            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Highlights
-              </md-button>
+            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Favorites
+            </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'API'">API's
             </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Angular'">AngularJS
+            </md-button>
+            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'ForFun'">For Fun
             </md-button>
             <md-button class="md-fab md-mini" ng-click="portfolioSearchText = 'Embarrassing'">🤔
             </md-button>
@@ -120,43 +124,44 @@
           </md-card-actions> -->
         </md-card>
       </div>
+      <!-- dialog popup! -->
       <div style="visibility: hidden">
-          <div class="md-dialog-container" id="portfolioItemDialog">
-            <md-dialog>
-              <form ng-cloak>
-                <md-toolbar class="md-accent">
-                  <div class="md-toolbar-tools">
-                    <h2 md-truncate>{{portfolioDetail.name}}</h2>
-                    <span flex></span>
-                    <md-button class="md-icon-button" ng-click="closeDialog()">
-                      <md-icon aria-label="close" class="material-icons">close</md-icon>
-                    </md-button>
-                  </div>
-                </md-toolbar>
-                
-                <img class="cover" ng-if="getNameFromArray(portfolioDetail.attachments,'MainImage')" ng-src="{{getNameFromArray(portfolioDetail.attachments,'MainImage').url}}"
+        <div class="md-dialog-container" id="portfolioItemDialog">
+          <md-dialog>
+            <form ng-cloak>
+              <md-toolbar class="md-accent">
+                <div class="md-toolbar-tools">
+                  <h2 md-truncate>{{portfolioDetail.name}}</h2>
+                  <span flex></span>
+                  <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <md-icon aria-label="close" class="material-icons">close</md-icon>
+                  </md-button>
+                </div>
+              </md-toolbar>
+
+              <img class="cover" ng-if="getNameFromArray(portfolioDetail.attachments,'MainImage')" ng-src="{{getNameFromArray(portfolioDetail.attachments,'MainImage').url}}"
                 class="md-card-image" alt="screenshot">
-                <md-dialog-content>
-                  <div class="md-dialog-content">
-                    <div>
-                        {{portfolioDetail.desc}}
-                    </div>
+              <md-dialog-content>
+                <div class="md-dialog-content">
+                  <div ng-bind-html="portfolioDetail.htmlDesc">
+                    <!-- {{portfolioDetail.desc}} -->
                   </div>
-                </md-dialog-content>
-    
-                <md-dialog-actions layout="row" ng-if="getNameFromArray(portfolioDetail.attachments,'github') || getNameFromArray(portfolioDetail.attachments,'Link')">
-                    <md-button ng-if="getNameFromArray(portfolioDetail.attachments,'github')" target="_blank" class="md-raised" ng-href="{{getNameFromArray(portfolioDetail.attachments,'github').url}}">
-                        <md-icon aria-label="github" class="material-icons">code</md-icon>
-                        GitHub
-                      </md-button>
-                      <md-button ng-if="getNameFromArray(portfolioDetail.attachments,'Link')" target="_blank" class="md-raised md-accent" ng-href="{{getNameFromArray(portfolioDetail.attachments,'Link').url}}">Check it out
-                        <md-icon aria-label="external link" class="material-icons">open_in_new</md-icon>
-                      </md-button>
-                </md-dialog-actions>
-              </form>
-            </md-dialog>
-          </div>
+                </div>
+              </md-dialog-content>
+
+              <md-dialog-actions layout="row" ng-if="getNameFromArray(portfolioDetail.attachments,'github') || getNameFromArray(portfolioDetail.attachments,'Link')">
+                <md-button ng-if="getNameFromArray(portfolioDetail.attachments,'github')" target="_blank" class="md-raised" ng-href="{{getNameFromArray(portfolioDetail.attachments,'github').url}}">
+                  <md-icon aria-label="github" class="material-icons">code</md-icon>
+                  GitHub
+                </md-button>
+                <md-button ng-if="getNameFromArray(portfolioDetail.attachments,'Link')" target="_blank" class="md-raised md-accent" ng-href="{{getNameFromArray(portfolioDetail.attachments,'Link').url}}">Check it out
+                  <md-icon aria-label="external link" class="material-icons">open_in_new</md-icon>
+                </md-button>
+              </md-dialog-actions>
+            </form>
+          </md-dialog>
         </div>
+      </div>
       <div layout="row" layout-wrap>
         <div flex="100" ng-if="!portfolio.items">
           <md-card>
@@ -167,7 +172,8 @@
               </md-card-title-text>
             </md-card-title>
             <md-card-content>
-                Fetching portfolio items, which are coming from a <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">Trello board as the backend</a>
+              Fetching portfolio items, which are coming from a
+              <a href="https://trello.com/b/bgLwimyQ/maxs-online-portfolio">Trello board as the backend</a>
             </md-card-content>
           </md-card>
         </div>
@@ -176,6 +182,11 @@
           <md-card class="portfolio-item" ng-click="showPortfolioDetail(site)">
             <img class="cover" ng-if="getNameFromArray(site.attachments,'MainImage')" ng-src="{{getNameFromArray(site.attachments,'MainImage').previews[4].url}}"
               class="md-card-image" alt="screenshot">
+            <div class="item-date-wrapper" ng-if="site.due">
+              <div class="item-date">
+                {{site.due | date:'MMM yyyy'}}
+              </div>
+            </div>
             <md-card-title>
               <md-card-title-text>
                 <span class="md-headline" md-truncate>{{site.name}}</span>
@@ -236,7 +247,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.1/markdown-it.min.js"></script>
   <script src="./scripts/app.js"></script>
 </body>
 
