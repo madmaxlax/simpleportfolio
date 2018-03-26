@@ -14,7 +14,7 @@
             .primaryPalette('indigo')
             .accentPalette('lime');
     });
-    angular.module('myapp').controller('appController', ['$scope', '$http', '$resource', '$filter', '$mdSidenav', '$mdDialog', '$mdToast', function ($scope, $http, $resource, $filter, $mdSidenav, $mdDialog, $mdToast) {
+    angular.module('myapp').controller('appController', ['$scope', '$http', '$resource', '$filter', '$mdSidenav', '$mdDialog', '$mdToast', '$window', function ($scope, $http, $resource, $filter, $mdSidenav, $mdDialog, $mdToast, $window) {
         //side nav toggle button
         $scope.toggleLeft = function () {
             $mdSidenav('left').toggle();
@@ -22,6 +22,10 @@
 
         //initialize filter text
         $scope.portfolioSearchText = '';
+
+        $scope.scrollToTop = function(){
+            $window.scrollTo(0,0);
+        };
 
         //function for when X is clicked to close the portfolio details popup
         $scope.closeDialog = function () {
@@ -32,6 +36,11 @@
         //functions for next and prev image chevrons
         $scope.setPortfolioDetailImage = function (imageIndex) {
             $scope.portfolioDetail.currentImage = null;
+            $scope.portfolioDetail.nextImageIndex = false;
+            $scope.portfolioDetail.prevImageIndex = false;
+            if ($scope.portfolioDetail.attachments[imageIndex] === void 0) {
+                return; //no more images
+            }
             if ($scope.portfolioDetail.attachments[imageIndex].previews.length >= 1) {
                 $scope.portfolioDetail.currentImage = $scope.portfolioDetail.attachments[imageIndex];
                 $scope.setPortfolioDetailNextImage(imageIndex + 1);

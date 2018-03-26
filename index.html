@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <md-toolbar layout="row" class="md-toolbar-tools" ng-cloak layout-align="space-between center">
+  <md-toolbar  layout="row" class="md-toolbar-tools" ng-cloak layout-align="space-between center">
     <md-button class="md-icon-button md-accent" hide-gt-sm ng-click="toggleLeft()" aria-label="Show Nav">
       <md-icon aria-label="settings" class="material-icons">settings</md-icon>
     </md-button>
@@ -124,6 +124,15 @@
           </md-card-actions> -->
         </md-card>
       </div>
+      <!-- fab button -->
+      <!-- <div class="fab-button" hide-gt-sm> -->
+          <md-button class="md-fab md-fab-bottom-right docs-scroll-fab md-button md-ink-ripple scrolling" ng-click="scrollToTop()">
+              <md-icon aria-label="top" class="material-icons ">arrow_upward</md-icon>
+              <md-tooltip md-direction="top">
+                  Back to top
+                </md-tooltip>
+            </md-button>
+      <!-- </div> -->
       <!-- dialog popup! -->
       <div style="visibility: hidden">
         <div class="md-dialog-container" id="portfolioItemDialog">

@@ -12,8 +12,13 @@ img.cover {
  md-dialog img.cover {
     object-fit: contain;
     /* width: 100%; */
-    max-height: 80%; /* optional, but in my case it was good */
+    height:400px; /*height optional, but in my case it was good */
     box-shadow: 0 1px 0px 0px rgba(0,0,0,.14);
+ }
+ @media (max-height: 800px){
+    md-dialog img.cover {
+        height:200px;
+    }
  }
  div.inline{
      display: inline;
@@ -86,4 +91,12 @@ img.cover {
     width: 48px;
     min-height: 48px;
     min-width: 48px;
+}
+.fab-button{
+    position: absolute;
+    bottom: 0;
+    right:0;
+}
+.md-fab-bottom-right{
+    position: fixed !important;
 }
