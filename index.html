@@ -96,7 +96,7 @@
           <md-card-content ng-show="portfolio.items">
             <p>
               These are some examples of my work as a developer on the web. I love all kinds of developing, from the full stack, but lately
-              my favorite is AngularJS for web apps.
+              my favorite is React for web apps.
               <br> Use the filter below to search through some of my stuff! Click or tap one for more detail.
             </p>
             <md-input-container>
@@ -107,6 +107,8 @@
               <md-icon aria-label="clear filter" class="material-icons">close</md-icon>
             </md-button>
             <br> Or try some tags:
+            <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'React'">React JS
+            </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'Highlights'">Highlights
             </md-button>
             <md-button class="md-raised md-accent" ng-click="portfolioSearchText = 'API'">API's
